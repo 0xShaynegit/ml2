@@ -7,7 +7,7 @@
 /* ---------- Reset (minimal, modern) ---------- */
 *, *::before, *::after { box-sizing: border-box; }
 * { margin: 0; }
-html, body { overflow-x: hidden; }
+html, body { overflow-x: clip; }
 html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
 body { min-height: 100svh; line-height: 1.55; -webkit-font-smoothing: antialiased; }
 img, picture, video, canvas, svg { display: block; max-width: 100%; height: auto; }
@@ -241,15 +241,16 @@ h3 { font-size: var(--text-md); }
 .header-inner {
   max-width: var(--measure-page);
   margin-inline: auto;
-  padding: var(--space-3xs) var(--space-gutter);
+  padding: var(--space-xs) var(--space-gutter);
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-s);
   position: relative;
+  transition: padding var(--duration-base) var(--ease-out-quart);
 }
-@media (min-width: 52rem) {
-  .header-inner { padding-block: var(--space-xs); }
+@media (max-width: 51.99rem) {
+  .site-header.is-scrolled .header-inner { padding-block: var(--space-3xs); }
 }
 
 .brand {
