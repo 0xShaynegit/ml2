@@ -158,7 +158,35 @@
   }
 
   /* ========================================================================
-     4. FAQ: one open at a time (class-toggle pattern, native <details>)
+     4. MOBILE NAV (hamburger toggle, close on link click)
+     ======================================================================== */
+  const hamburger = document.getElementById('hamburger');
+  const primaryNav = document.getElementById('primary-nav');
+
+  if (hamburger && primaryNav) {
+    hamburger.addEventListener('click', () => {
+      const isOpen = primaryNav.classList.toggle('is-open');
+      hamburger.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    primaryNav.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        primaryNav.classList.remove('is-open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    /* Close on outside click */
+    document.addEventListener('click', (e) => {
+      if (!hamburger.contains(e.target) && !primaryNav.contains(e.target)) {
+        primaryNav.classList.remove('is-open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  /* ========================================================================
+     5. FAQ: one open at a time (class-toggle pattern, native <details>)
      ======================================================================== */
   const faqItems = document.querySelectorAll('.faq-item');
   faqItems.forEach((item) => {
