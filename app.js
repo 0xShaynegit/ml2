@@ -55,7 +55,7 @@
 
   function updateCalculator() {
     const principal = Number(els.amount.value);
-    const years = Number(els.term.value);
+    const years    = Number(els.term.value);
     const bankRate = Number(els.bankRate.value);
     const brokerRate = Math.max(PANEL_FLOOR, bankRate - PANEL_ADVANTAGE);
 
@@ -83,6 +83,7 @@
   }
 
   const calculatorReady = els.amount && els.term && els.bankRate && els.gapBar;
+  /* Default to $550k (closer to Hobart median) */
   if (calculatorReady) {
     [els.amount, els.term, els.bankRate].forEach((slider) => {
       slider.addEventListener('input', updateCalculator);
