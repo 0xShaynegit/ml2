@@ -241,12 +241,15 @@ h3 { font-size: var(--text-md); }
 .header-inner {
   max-width: var(--measure-page);
   margin-inline: auto;
-  padding: var(--space-xs) var(--space-gutter);
+  padding: var(--space-3xs) var(--space-gutter);
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-s);
   position: relative;
+}
+@media (min-width: 52rem) {
+  .header-inner { padding-block: var(--space-xs); }
 }
 
 .brand {
